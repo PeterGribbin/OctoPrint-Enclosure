@@ -130,7 +130,7 @@ Find the address of the sensor:
 ```
 i2cdetect -y 1
 ```
-#### NOVUS 1040 Contorller sensor
+#### NOVUS 1040 Controller sensor
 
 Connect via USB. expected COM port is named '/dev/ttyACM0'
 
