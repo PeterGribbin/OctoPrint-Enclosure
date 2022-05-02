@@ -1026,7 +1026,7 @@ class EnclosurePlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.TemplateP
                     hum = 0
                     airquality = 0
                 elif sensor['temp_sensor_type'] == "novus1040":
-                    temp = self.read_novus_temp() # novus Temp
+                    temp = 69 # self.read_novus_temp() # novus Temp
                     hum = 0
                     airquality = 0
                 elif sensor['temp_sensor_type'] == "si7021":
