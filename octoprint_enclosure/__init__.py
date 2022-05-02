@@ -23,7 +23,7 @@ import json
 import copy
 from smbus2 import SMBus
 from .getPiTemp import PiTemp
-#from .novus1040 import NovusTemp
+from .novus1040 import NovusTemp
 import struct
 
 
@@ -1026,7 +1026,7 @@ class EnclosurePlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.TemplateP
                     hum = 0
                     airquality = 0
                 elif sensor['temp_sensor_type'] == "novus1040":
-                    temp = 69 # self.read_novus_temp() # novus Temp
+                    temp = self.read_novus_temp() # novus Temp
                     hum = 0
                     airquality = 0
                 elif sensor['temp_sensor_type'] == "si7021":
@@ -1297,17 +1297,18 @@ class EnclosurePlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.TemplateP
             return 0
         
     def read_novus_temp(self):
-        try:
-            novustemp = NovusTemp()
-            temp = novustemp.getTemp()
-            if  self._settings.get(["debug_temperature_log"]) is True:
-                self._logger.debug("Novus PV: %s", temp)
-            return temp
-        except Exception as ex:
-            self._logger.info(
-                "Failed to get Novus temperature")
-            self.log_error(ex)
-            return 0
+        return 69
+        #try:
+        #    novustemp = NovusTemp()
+        #    temp = novustemp.getTemp()
+        #    if  self._settings.get(["debug_temperature_log"]) is True:
+        #        self._logger.debug("Novus PV: %s", temp)
+        #    return temp
+        #except Exception as ex:
+        #    self._logger.info(
+        #        "Failed to get Novus temperature")
+        #    self.log_error(ex)
+        #    return 0
 
     def read_si7021_temp(self, address, i2cbus):
         try:
