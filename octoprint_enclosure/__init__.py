@@ -1025,6 +1025,10 @@ class EnclosurePlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.TemplateP
                     temp = self.read_rpi_temp() # rpi CPU Temp
                     hum = 0
                     airquality = 0
+                elif sensor['temp_sensor_type'] == "novus1040":
+                    temp = self.read_novus_temp() # novus Temp
+                    hum = 0
+                    airquality = 0
                 elif sensor['temp_sensor_type'] == "si7021":
                     temp, hum = self.read_si7021_temp(sensor['temp_sensor_address'], sensor['temp_sensor_i2cbus'])
                     airquality = 0
