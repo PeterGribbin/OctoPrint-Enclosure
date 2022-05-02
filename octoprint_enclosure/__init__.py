@@ -23,6 +23,7 @@ import json
 import copy
 from smbus2 import SMBus
 from .getPiTemp import PiTemp
+from .novus1040 import NovusTemp
 import struct
 
 
@@ -1288,6 +1289,19 @@ class EnclosurePlugin(octoprint.plugin.StartupPlugin, octoprint.plugin.TemplateP
         except Exception as ex:
             self._logger.info(
                 "Failed to get pi cpu temperature")
+            self.log_error(ex)
+            return 0
+        
+    def read_novus_temp(self):
+        try:
+            novustemp = NovusTemp()
+            temp = novustemp.getTemp()
+            if  self._settings.get(["debug_temperature_log"]) is True:
+                self._logger.debug("Novus PV: %s", temp)
+            return temp
+        except Exception as ex:
+            self._logger.info(
+                "Failed to get Novus temperature")
             self.log_error(ex)
             return 0
 
