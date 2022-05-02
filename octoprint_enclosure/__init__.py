@@ -23,7 +23,7 @@ import json
 import copy
 from smbus2 import SMBus
 from .getPiTemp import PiTemp
-from .novus1040 import NovusTemp
+#from .novus1040 import NovusTemp
 import struct
 
 
